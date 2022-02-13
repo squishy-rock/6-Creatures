@@ -1,4 +1,6 @@
-6. You must create a separate test file to house your main function used to run your game.
-You must demonstrate your implementation by parading all your creatures on the screen
-one after another.
-7. Your code must adhere to the GBC Coding Standard document found on Blackboard.
+Animations must be defined in a text file and read into the program. You may use a
+single text file for all creatures OR a text file for each creature.
+
+Your code must adhere to the GBC Coding Standard document found on Blackboard.
+
+Create Video
