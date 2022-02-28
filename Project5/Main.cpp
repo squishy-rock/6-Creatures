@@ -1,7 +1,8 @@
+//Myar Abouelnasr Assignment 1 - Colony 
+
 #include <string>
 #include <windows.h>
 #include <iostream>
-
 #include "Creature1.h"
 #include "Creature2.h"
 #include "Creature3.h"
