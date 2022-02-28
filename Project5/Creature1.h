@@ -11,6 +11,8 @@
 #include <windows.h>
 #include <iostream>
 
+
+
 class Creature1 {
 public:
 	Creature1(HANDLE sharedScreen);

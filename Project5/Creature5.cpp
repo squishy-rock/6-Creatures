@@ -3,6 +3,10 @@
 //( x )====
 
 #include "Creature5.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+
 Creature5::Creature5(HANDLE sharedScreen)
 {
 	screen = sharedScreen;
@@ -35,20 +39,25 @@ void Creature5::DrawCreature(int x, int y)
 
 void Creature5::LoadAnimationFrames()
 {
-	// TODO: Add loading from text file
-	AnimationFrame first;
-	first.x = 0;
-	first.y = 0;
+	std::string xStr; //the string rep of the x coord
+	std::string yStr; //the string rep of the y coord
+	std::ifstream myfile("CreatureAnimations.txt"); //grabbing the file to read
+	if (myfile.is_open())
+	{
+		while (true)//loop forever
+		{
+			if (!getline(myfile, xStr)) // getting the x coord from the file, ! works as a not so if not true u get out of loop
+				break; //breaks out of the loop
+			if (!getline(myfile, yStr))
+				break;
+			int x = stoi(xStr); //to make x an actual int (string to int) converting from chars to int.
+			int y = stoi(yStr); //to make y an actual int (string to int) converting from chars to int.
+			AnimationFrame frame;
+			frame.x = x;
+			frame.y = y;
+			frames.push_back(frame);
+		}
+		myfile.close();
+	}
 
-	AnimationFrame second;
-	second.x = 10;
-	second.y = 0;
-
-	AnimationFrame third;
-	third.x = 20;
-	third.y = 0;
-
-	frames.push_back(first);
-	frames.push_back(second);
-	frames.push_back(third);
 }

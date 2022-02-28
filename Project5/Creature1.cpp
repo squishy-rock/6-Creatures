@@ -1,4 +1,7 @@
 #include "Creature1.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 //0     0
 //(0   0)---
 //( o )u u \
@@ -11,7 +14,7 @@ Creature1::Creature1(HANDLE sharedScreen)
 
 void Creature1::Animate()
 {
-	for (int i = 0; i < frames.size(); i++) //defining interger i and starting it at 0 for the start of the screen, ending condition when frames are complete, 
+	for (int i = 0; i < frames.size(); i++) //defining int i and starting it at 0 for the start of the screen, ending condition when frames are complete, 
 	{
 		system("CLS"); // clear the screen
 		AnimationFrame frame = frames[i];  // Pulling frame objects out of vector that we can use, since we defined first frame with i u can use i
@@ -35,21 +38,28 @@ void Creature1::DrawCreature(int x, int y)
 
 void Creature1::LoadAnimationFrames()
 {
-	// TODO: Add loading from text file
-	AnimationFrame first;
-	first.x = 0;
-	first.y = 0;
 
-	AnimationFrame second;
-	second.x = 10;
-	second.y = 0;
+		std::string xStr; //the string rep of the x coord
+		std::string yStr; //the string rep of the y coord
+		std::ifstream myfile("CreatureAnimations.txt"); //grabbing the file to read
+		if (myfile.is_open())
+		{
+			while (true)//loop forever
+			{
+				if (!getline(myfile, xStr)) // getting the x coord from the file, ! works as a not so if not true u get out of loop
+					break; //breaks out of the loop
+				if (!getline(myfile, yStr))
+					break; 
+				int x = stoi(xStr); //to make x an actual int (string to int) converting from chars to int.
+				int y = stoi(yStr); //to make y an actual int (string to int) converting from chars to int.
+				AnimationFrame frame;
+				frame.x = x;
+				frame.y = y;
+				frames.push_back(frame); 
+			}
+			myfile.close();
+		}
 
-	AnimationFrame third;
-	third.x = 20;
-	third.y = 0;
-
-	frames.push_back(first);
-	frames.push_back(second);
-	frames.push_back(third);
+	
 }
 
