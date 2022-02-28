@@ -16,8 +16,8 @@ int main()
 {
 	HANDLE screen = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	Creature1 creature1(screen); // Instantiate an object of type Create1 called creature1. It takes the HANDLE scren as a constructor parameter.
-	creature1.Animate(); //calling the object
+	Creature1 creature1(screen); // Instantiate an object of type Creature 1 named creature1. It takes the HANDLE screen as a constructor parameter.
+	creature1.Animate(); //calling the animate function on the object
 
 	Creature2 creature2(screen);
 	creature2.Animate();
@@ -33,8 +33,6 @@ int main()
 
 	Creature6 creature6(screen);
 	creature6.Animate();
-
-	system("PAUSE");
 
 	return 0;
 }
